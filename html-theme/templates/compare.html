@@ -1,0 +1,49 @@
+<title><!-- 페이지 제목: 예) 계정과목 명칭 비교 --></title>
+<style>
+/* ⇒ 여기에 html_theme.css 전체 내용을 붙여넣기 (Artifact는 self-contained 필수) */
+</style>
+
+<div class="wrap">
+
+  <!-- 히어로 -->
+  <div class="hero">
+    <h1><!-- 제목 --></h1>
+    <div class="sub"><!-- A사 · 기준일 YYYY.MM.DD · 작성 이재현 --></div>
+  </div>
+
+  <!-- 핵심 요약 3줄 -->
+  <div class="callout">
+    <b>핵심</b> — <!-- 이 비교의 결론을 1~3문장으로 -->
+  </div>
+
+  <!-- 나란히 비교표 -->
+  <h2>비교 결과</h2>
+  <div class="scroll-x">
+    <table class="tbl">
+      <tr><th>구분</th><th>기존</th><th>변경 후</th><th>비고</th></tr>
+      <tr>
+        <td><!-- 항목 --></td>
+        <td class="old"><!-- 기존 표기 --></td>
+        <td class="new"><!-- 통일안 --><span class="badge"><!-- 규칙/판단 --></span></td>
+        <td><!-- 비고 --></td>
+      </tr>
+      <!-- 차이 강조가 필요하면 .diff-del / .diff-add 사용 -->
+    </table>
+  </div>
+
+  <!-- 항목별 상세 (필요한 항목만) -->
+  <h2>항목별 상세</h2>
+  <div class="grid2">
+    <div class="card"><b><!-- 항목 1 --></b> — <!-- 차이의 이유·영향 --></div>
+    <div class="card"><b><!-- 항목 2 --></b> — <!-- --></div>
+  </div>
+
+  <!-- 결론·권고 -->
+  <h2>결론 · 권고</h2>
+  <ul class="check">
+    <li><!-- 권고 1 --></li>
+    <li><!-- 권고 2 --></li>
+  </ul>
+
+  <div class="footnote">고객사명은 익명 처리했습니다. <!-- 기준·출처 각주 --></div>
+</div>

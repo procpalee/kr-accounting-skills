@@ -1,0 +1,34 @@
+# v* 태그 push 시: SKILL.md가 있는 모든 최상위 폴더를 각각 zip으로 묶어
+# 하나의 릴리스에 전부 첨부한다. → releases/latest/download/<스킬>.zip 이 항상 최신.
+name: Release skills
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Zip each skill folder
+        run: |
+          mkdir -p dist
+          for d in */; do
+            name="${d%/}"
+            # 스킬 폴더 판별: SKILL.md 존재 여부
+            [ -f "$name/SKILL.md" ] || continue
+            zip -r "dist/$name.zip" "$name" -x "*__pycache__*" -x "*.pyc"
+            echo "packaged: $name"
+          done
+          ls -la dist/
+
+      - name: Create release with all skill zips
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.zip
+          generate_release_notes: true

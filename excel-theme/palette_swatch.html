@@ -1,0 +1,93 @@
+<!doctype html><meta charset='utf-8'>
+<title>Office 팔레트 스와치</title>
+<style>
+body{font-family:Pretendard,'맑은 고딕',sans-serif;margin:32px;background:#fafafa;color:#222}
+h1{font-size:22px} h2{margin-top:36px;font-size:17px}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.chip{width:150px;border:1px solid #ddd;border-radius:8px;overflow:hidden;background:#fff}
+.sw{height:64px} .meta{padding:7px 9px;font-size:12px;line-height:1.5}
+.role{font-weight:600} .hex{color:#666;font-family:monospace}
+.tag{display:inline-block;background:#eee;border-radius:4px;padding:1px 6px;font-size:11px;margin-left:6px}
+</style>
+<h1>Office 공유 팔레트 스와치</h1>
+<p>색을 바꾸려면 <code>excel_theme.py</code> 의 PALETTES hex 값을 수정하고 <code>python build_all.py</code> 를 다시 실행하세요. 현재 기본 테마: <b>default</b></p>
+<h2>dcf-valuation — DCF·평가 (Ocean Blue Clean)</h2>
+<p class='hex'>font: Pretendard → 맑은 고딕</p>
+<div class='row'>
+<div class='chip'><div class='sw' style='background:#004889;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#004889</div><div class='meta'><span class='role'>primary</span><br><span class='hex'>#004889</span></div></div>
+<div class='chip'><div class='sw' style='background:#1F3864;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#1F3864</div><div class='meta'><span class='role'>primary_dark</span><br><span class='hex'>#1F3864</span></div></div>
+<div class='chip'><div class='sw' style='background:#2B579A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#2B579A</div><div class='meta'><span class='role'>secondary</span><br><span class='hex'>#2B579A</span></div></div>
+<div class='chip'><div class='sw' style='background:#5B9BD5;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#5B9BD5</div><div class='meta'><span class='role'>secondary_lt</span><br><span class='hex'>#5B9BD5</span></div></div>
+<div class='chip'><div class='sw' style='background:#F5F8FC;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#F5F8FC</div><div class='meta'><span class='role'>band</span><br><span class='hex'>#F5F8FC</span></div></div>
+<div class='chip'><div class='sw' style='background:#F5F8FC;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#F5F8FC</div><div class='meta'><span class='role'>subheader</span><br><span class='hex'>#F5F8FC</span></div></div>
+<div class='chip'><div class='sw' style='background:#F5F8FC;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#F5F8FC</div><div class='meta'><span class='role'>surface</span><br><span class='hex'>#F5F8FC</span></div></div>
+<div class='chip'><div class='sw' style='background:#F5F8FC;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#F5F8FC</div><div class='meta'><span class='role'>note</span><br><span class='hex'>#F5F8FC</span></div></div>
+<div class='chip'><div class='sw' style='background:#5B9BD5;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#5B9BD5</div><div class='meta'><span class='role'>accent</span><br><span class='hex'>#5B9BD5</span></div></div>
+<div class='chip'><div class='sw' style='background:#5A6A7A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#5A6A7A</div><div class='meta'><span class='role'>negative</span><br><span class='hex'>#5A6A7A</span></div></div>
+<div class='chip'><div class='sw' style='background:#3D4F5F;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#3D4F5F</div><div class='meta'><span class='role'>text</span><br><span class='hex'>#3D4F5F</span></div></div>
+<div class='chip'><div class='sw' style='background:#FFFFFF;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#FFFFFF</div><div class='meta'><span class='role'>header_font</span><br><span class='hex'>#FFFFFF</span></div></div>
+</div>
+<h2>default — default (정산표·결산 — 회색 statement) <span class='tag'>DEFAULT</span></h2>
+<p class='hex'>font: 맑은 고딕 → Malgun Gothic</p>
+<div class='row'>
+<div class='chip'><div class='sw' style='background:#404040;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#404040</div><div class='meta'><span class='role'>primary</span><br><span class='hex'>#404040</span></div></div>
+<div class='chip'><div class='sw' style='background:#262626;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#262626</div><div class='meta'><span class='role'>primary_dark</span><br><span class='hex'>#262626</span></div></div>
+<div class='chip'><div class='sw' style='background:#808080;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#808080</div><div class='meta'><span class='role'>secondary</span><br><span class='hex'>#808080</span></div></div>
+<div class='chip'><div class='sw' style='background:#BFBFBF;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#BFBFBF</div><div class='meta'><span class='role'>secondary_lt</span><br><span class='hex'>#BFBFBF</span></div></div>
+<div class='chip'><div class='sw' style='background:#F2F2F2;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#F2F2F2</div><div class='meta'><span class='role'>band</span><br><span class='hex'>#F2F2F2</span></div></div>
+<div class='chip'><div class='sw' style='background:#FFFFFF;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#FFFFFF</div><div class='meta'><span class='role'>subheader</span><br><span class='hex'>#FFFFFF</span></div></div>
+<div class='chip'><div class='sw' style='background:#FFFFFF;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#FFFFFF</div><div class='meta'><span class='role'>surface</span><br><span class='hex'>#FFFFFF</span></div></div>
+<div class='chip'><div class='sw' style='background:#FFFBEF;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#FFFBEF</div><div class='meta'><span class='role'>note</span><br><span class='hex'>#FFFBEF</span></div></div>
+<div class='chip'><div class='sw' style='background:#C00000;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#C00000</div><div class='meta'><span class='role'>accent</span><br><span class='hex'>#C00000</span></div></div>
+<div class='chip'><div class='sw' style='background:#FF0000;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#FF0000</div><div class='meta'><span class='role'>negative</span><br><span class='hex'>#FF0000</span></div></div>
+<div class='chip'><div class='sw' style='background:#000000;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#000000</div><div class='meta'><span class='role'>text</span><br><span class='hex'>#000000</span></div></div>
+<div class='chip'><div class='sw' style='background:#FFFFFF;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#FFFFFF</div><div class='meta'><span class='role'>header_font</span><br><span class='hex'>#FFFFFF</span></div></div>
+</div>
+<h2>procpa — procpa (브랜드 블루 — 딥네이비 & 블루)</h2>
+<p class='hex'>font: Pretendard → 맑은 고딕</p>
+<div class='row'>
+<div class='chip'><div class='sw' style='background:#2563EB;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#2563EB</div><div class='meta'><span class='role'>primary</span><br><span class='hex'>#2563EB</span></div></div>
+<div class='chip'><div class='sw' style='background:#0B1C4A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#0B1C4A</div><div class='meta'><span class='role'>primary_dark</span><br><span class='hex'>#0B1C4A</span></div></div>
+<div class='chip'><div class='sw' style='background:#4A5160;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#4A5160</div><div class='meta'><span class='role'>secondary</span><br><span class='hex'>#4A5160</span></div></div>
+<div class='chip'><div class='sw' style='background:#94A3B8;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#94A3B8</div><div class='meta'><span class='role'>secondary_lt</span><br><span class='hex'>#94A3B8</span></div></div>
+<div class='chip'><div class='sw' style='background:#EFF5FF;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#EFF5FF</div><div class='meta'><span class='role'>band</span><br><span class='hex'>#EFF5FF</span></div></div>
+<div class='chip'><div class='sw' style='background:#FFFFFF;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#FFFFFF</div><div class='meta'><span class='role'>subheader</span><br><span class='hex'>#FFFFFF</span></div></div>
+<div class='chip'><div class='sw' style='background:#FFFFFF;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#FFFFFF</div><div class='meta'><span class='role'>surface</span><br><span class='hex'>#FFFFFF</span></div></div>
+<div class='chip'><div class='sw' style='background:#FFFBEF;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#FFFBEF</div><div class='meta'><span class='role'>note</span><br><span class='hex'>#FFFBEF</span></div></div>
+<div class='chip'><div class='sw' style='background:#2563EB;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#2563EB</div><div class='meta'><span class='role'>accent</span><br><span class='hex'>#2563EB</span></div></div>
+<div class='chip'><div class='sw' style='background:#FF0000;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#FF0000</div><div class='meta'><span class='role'>negative</span><br><span class='hex'>#FF0000</span></div></div>
+<div class='chip'><div class='sw' style='background:#000000;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#000000</div><div class='meta'><span class='role'>text</span><br><span class='hex'>#000000</span></div></div>
+<div class='chip'><div class='sw' style='background:#FFFFFF;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#FFFFFF</div><div class='meta'><span class='role'>header_font</span><br><span class='hex'>#FFFFFF</span></div></div>
+</div>
+<h2>navy — navy (네이비 & 골드) — legacy</h2>
+<p class='hex'>font: 맑은 고딕 → Malgun Gothic</p>
+<div class='row'>
+<div class='chip'><div class='sw' style='background:#1F3A5F;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#1F3A5F</div><div class='meta'><span class='role'>primary</span><br><span class='hex'>#1F3A5F</span></div></div>
+<div class='chip'><div class='sw' style='background:#16293F;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#16293F</div><div class='meta'><span class='role'>primary_dark</span><br><span class='hex'>#16293F</span></div></div>
+<div class='chip'><div class='sw' style='background:#3A5172;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#3A5172</div><div class='meta'><span class='role'>secondary</span><br><span class='hex'>#3A5172</span></div></div>
+<div class='chip'><div class='sw' style='background:#8AA0BC;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#8AA0BC</div><div class='meta'><span class='role'>secondary_lt</span><br><span class='hex'>#8AA0BC</span></div></div>
+<div class='chip'><div class='sw' style='background:#EEF2F7;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#EEF2F7</div><div class='meta'><span class='role'>band</span><br><span class='hex'>#EEF2F7</span></div></div>
+<div class='chip'><div class='sw' style='background:#FFFFFF;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#FFFFFF</div><div class='meta'><span class='role'>subheader</span><br><span class='hex'>#FFFFFF</span></div></div>
+<div class='chip'><div class='sw' style='background:#FFFFFF;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#FFFFFF</div><div class='meta'><span class='role'>surface</span><br><span class='hex'>#FFFFFF</span></div></div>
+<div class='chip'><div class='sw' style='background:#FFFBEF;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#FFFBEF</div><div class='meta'><span class='role'>note</span><br><span class='hex'>#FFFBEF</span></div></div>
+<div class='chip'><div class='sw' style='background:#C9A227;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#C9A227</div><div class='meta'><span class='role'>accent</span><br><span class='hex'>#C9A227</span></div></div>
+<div class='chip'><div class='sw' style='background:#FF0000;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#FF0000</div><div class='meta'><span class='role'>negative</span><br><span class='hex'>#FF0000</span></div></div>
+<div class='chip'><div class='sw' style='background:#1A2330;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#1A2330</div><div class='meta'><span class='role'>text</span><br><span class='hex'>#1A2330</span></div></div>
+<div class='chip'><div class='sw' style='background:#FFFFFF;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#FFFFFF</div><div class='meta'><span class='role'>header_font</span><br><span class='hex'>#FFFFFF</span></div></div>
+</div>
+<h2>charcoal — charcoal (차콜 & 틸) — legacy</h2>
+<p class='hex'>font: 맑은 고딕 → Malgun Gothic</p>
+<div class='row'>
+<div class='chip'><div class='sw' style='background:#2A2E35;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#2A2E35</div><div class='meta'><span class='role'>primary</span><br><span class='hex'>#2A2E35</span></div></div>
+<div class='chip'><div class='sw' style='background:#1A1D22;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#1A1D22</div><div class='meta'><span class='role'>primary_dark</span><br><span class='hex'>#1A1D22</span></div></div>
+<div class='chip'><div class='sw' style='background:#4A4F58;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#4A4F58</div><div class='meta'><span class='role'>secondary</span><br><span class='hex'>#4A4F58</span></div></div>
+<div class='chip'><div class='sw' style='background:#9AA0AA;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#9AA0AA</div><div class='meta'><span class='role'>secondary_lt</span><br><span class='hex'>#9AA0AA</span></div></div>
+<div class='chip'><div class='sw' style='background:#EDEFF2;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#EDEFF2</div><div class='meta'><span class='role'>band</span><br><span class='hex'>#EDEFF2</span></div></div>
+<div class='chip'><div class='sw' style='background:#FFFFFF;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#FFFFFF</div><div class='meta'><span class='role'>subheader</span><br><span class='hex'>#FFFFFF</span></div></div>
+<div class='chip'><div class='sw' style='background:#FFFFFF;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#FFFFFF</div><div class='meta'><span class='role'>surface</span><br><span class='hex'>#FFFFFF</span></div></div>
+<div class='chip'><div class='sw' style='background:#FFFBEF;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#FFFBEF</div><div class='meta'><span class='role'>note</span><br><span class='hex'>#FFFBEF</span></div></div>
+<div class='chip'><div class='sw' style='background:#2E8B7F;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#2E8B7F</div><div class='meta'><span class='role'>accent</span><br><span class='hex'>#2E8B7F</span></div></div>
+<div class='chip'><div class='sw' style='background:#FF0000;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#FF0000</div><div class='meta'><span class='role'>negative</span><br><span class='hex'>#FF0000</span></div></div>
+<div class='chip'><div class='sw' style='background:#22262B;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px'>#22262B</div><div class='meta'><span class='role'>text</span><br><span class='hex'>#22262B</span></div></div>
+<div class='chip'><div class='sw' style='background:#FFFFFF;color:#222;display:flex;align-items:center;justify-content:center;font-size:12px'>#FFFFFF</div><div class='meta'><span class='role'>header_font</span><br><span class='hex'>#FFFFFF</span></div></div>
+</div>

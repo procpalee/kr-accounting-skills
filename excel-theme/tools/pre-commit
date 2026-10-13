@@ -1,0 +1,7 @@
+#!/bin/sh
+# 테마(PALETTES) 변경을 웹 MCP에 자동 동기화:
+#   commit 시 theme.json + plan.py 재생성 → 스테이징.
+# 설치(레포 루트=skills/ 에서 1회):
+#   cp excel-theme/tools/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+python excel-theme/tools/export_theme.py || exit 1
+git add excel-theme-mcp/theme.json excel-theme-mcp/plan.py

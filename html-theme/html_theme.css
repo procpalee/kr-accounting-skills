@@ -1,0 +1,121 @@
+/* ═══════════════════════════════════════════════════════════════
+   html-theme — 정리 페이지 표준 CSS (C안 Hybrid, 사용자 확정 2026-07)
+   화이트 베이스 + 네이비 헤더바, 컬러는 배지·숫자에만. Pretendard.
+   Artifact는 self-contained여야 하므로 이 파일 전체를 <style>로 인라인.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── 색·타이포 토큰 (컴포넌트는 반드시 토큰만 참조) ── */
+:root{
+  --bg:#FFFFFF; --surface:#FFFFFF; --band:#FAFBFC;
+  --ink:#16213E;            /* 제목 */
+  --text:#2A2F38;           /* 본문 */
+  --sub:#6B7280;            /* 보조 텍스트 */
+  --navy:#0B1C4A;           /* 헤더바·표 삼선 */
+  --blue:#2563EB;           /* 액센트(배지·번호·링크) */
+  --blue-band:#EFF5FF;      /* 옅은 블루 배경 */
+  --line:#E2E5EA; --line-soft:#EDF0F3;
+  --neg:#C0392B; --pos:#1E7F4F;
+  --shadow:0 1px 3px rgba(16,24,40,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14161B; --surface:#1C1F26; --band:#1A1D23;
+    --ink:#E8EAEF; --text:#C9CED6; --sub:#8B93A0;
+    --navy:#5B8DEF; --blue:#6D9BFF; --blue-band:#1C2A47;
+    --line:#2A2E36; --line-soft:#22262D;
+    --neg:#E06C5E; --pos:#4CAF7D;
+    --shadow:0 1px 3px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14161B; --surface:#1C1F26; --band:#1A1D23;
+  --ink:#E8EAEF; --text:#C9CED6; --sub:#8B93A0;
+  --navy:#5B8DEF; --blue:#6D9BFF; --blue-band:#1C2A47;
+  --line:#2A2E36; --line-soft:#22262D;
+  --neg:#E06C5E; --pos:#4CAF7D;
+  --shadow:0 1px 3px rgba(0,0,0,.3);
+}
+:root[data-theme="light"]{
+  --bg:#FFFFFF; --surface:#FFFFFF; --band:#FAFBFC;
+  --ink:#16213E; --text:#2A2F38; --sub:#6B7280;
+  --navy:#0B1C4A; --blue:#2563EB; --blue-band:#EFF5FF;
+  --line:#E2E5EA; --line-soft:#EDF0F3;
+  --neg:#C0392B; --pos:#1E7F4F;
+  --shadow:0 1px 3px rgba(16,24,40,.06);
+}
+
+/* ── 베이스 ── */
+body{ background:var(--bg); color:var(--text); margin:0; padding:40px 20px 80px;
+  font-family:"Pretendard Variable",Pretendard,"Malgun Gothic","맑은 고딕",sans-serif;
+  line-height:1.65; font-size:15px; }
+.wrap{ max-width:860px; margin:0 auto; }
+a{ color:var(--blue); text-decoration:none; }
+a:hover{ text-decoration:underline; }
+b,strong{ color:var(--ink); }
+
+/* ── 히어로 (제목부): 네이비 상단바 ── */
+.hero{ border-top:4px solid var(--navy); border-bottom:1px solid var(--line);
+  padding:18px 2px 14px; margin-bottom:28px; }
+.hero h1{ font-size:1.45rem; color:var(--ink); margin:0 0 4px; letter-spacing:-.01em; text-wrap:balance; }
+.hero .sub{ font-size:.82rem; color:var(--sub); }
+
+/* ── KPI 숫자 카드 ── */
+.kpis{ display:flex; gap:12px; flex-wrap:wrap; margin:0 0 28px; }
+.kpi{ flex:1; min-width:130px; border:1px solid var(--line); border-radius:6px;
+  padding:12px 16px; background:var(--surface); box-shadow:var(--shadow); }
+.kpi .n{ font-size:1.4rem; font-weight:800; color:var(--navy); font-variant-numeric:tabular-nums; }
+.kpi .l{ font-size:.75rem; color:var(--sub); }
+
+/* ── 섹션 제목: 번호는 블루 (순서가 있는 내용에만 번호 사용) ── */
+h2{ font-size:1.05rem; color:var(--ink); margin:34px 0 12px; }
+h2 .no{ color:var(--blue); margin-right:8px; font-variant-numeric:tabular-nums; }
+h3{ font-size:.92rem; color:var(--ink); margin:22px 0 8px; }
+
+/* ── 표: 네이비 삼선표 + 회계 숫자 ── */
+.scroll-x{ overflow-x:auto; }
+.tbl{ border-collapse:collapse; width:100%; font-size:.85rem; }
+.tbl th{ border-top:2px solid var(--navy); border-bottom:1px solid var(--navy);
+  padding:8px 10px; text-align:left; font-weight:700; color:var(--ink); background:var(--surface); }
+.tbl td{ padding:8px 10px; border-bottom:1px solid var(--line-soft); }
+.tbl tr:last-child td{ border-bottom:2px solid var(--navy); }
+.tbl .num{ text-align:right; font-variant-numeric:tabular-nums; }
+.tbl .total td{ font-weight:700; background:var(--band); }
+.neg{ color:var(--neg); }        /* 음수·경고: (1,200) 빨간 괄호, 0은 "-" */
+.pos{ color:var(--pos); }
+
+/* ── 비교·차이 표기 ── */
+.old{ color:var(--sub); }                       /* 기존 표기 */
+.new{ font-weight:700; color:var(--ink); }      /* 통일안·변경 후 */
+.diff-del{ color:var(--neg); text-decoration:line-through; text-decoration-thickness:1px; }
+.diff-add{ color:var(--blue); font-weight:700; }
+
+/* ── 배지 ── */
+.badge{ display:inline-block; font-size:.7rem; border:1px solid var(--blue); color:var(--blue);
+  padding:1px 8px; border-radius:10px; margin-left:6px; font-weight:600; white-space:nowrap; }
+.badge-warn{ border-color:var(--neg); color:var(--neg); }
+.badge-ok{ border-color:var(--pos); color:var(--pos); }
+
+/* ── 콜아웃·카드 ── */
+.callout{ border:1px solid var(--line); border-left:3px solid var(--navy);
+  border-radius:0 6px 6px 0; padding:12px 16px; font-size:.85rem;
+  margin:18px 0; background:var(--band); }
+.card{ border:1px solid var(--line); border-radius:6px; padding:14px 18px;
+  margin-top:10px; font-size:.85rem; background:var(--surface); }
+.grid2{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px; }
+.grid3{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; }
+
+/* ── 단계 카드 (steps 프리셋) ── */
+.step{ border:1px solid var(--line); border-radius:6px; padding:16px 20px;
+  margin-top:12px; background:var(--surface); box-shadow:var(--shadow); }
+.step .step-no{ display:inline-block; background:var(--navy); color:#fff; font-weight:700;
+  font-size:.75rem; padding:2px 10px; border-radius:3px; margin-bottom:8px; }
+.step h3{ margin:0 0 6px; }
+
+/* ── 체크리스트 (고려사항) ── */
+.check{ list-style:none; padding:0; margin:8px 0; }
+.check li{ padding:6px 0 6px 26px; position:relative; border-bottom:1px solid var(--line-soft); font-size:.85rem; }
+.check li::before{ content:"✓"; position:absolute; left:4px; color:var(--blue); font-weight:700; }
+
+/* ── 각주 (익명화 표기 등) ── */
+.footnote{ margin-top:36px; padding-top:10px; border-top:1px solid var(--line);
+  font-size:.74rem; color:var(--sub); }

@@ -22,6 +22,11 @@ jobs:
             name="${d%/}"
             # 스킬 폴더 판별: SKILL.md 존재 여부
             [ -f "$name/SKILL.md" ] || continue
+            # claude.ai 업로드는 zip 하나에 SKILL.md 가 정확히 1개여야 한다
+            n=$(find "$name" -name SKILL.md | wc -l)
+            if [ "$n" -ne 1 ]; then
+              echo "::error::$name 에 SKILL.md 가 $n 개 있습니다"; exit 1
+            fi
             zip -r "dist/$name.zip" "$name" -x "*__pycache__*" -x "*.pyc"
             echo "packaged: $name"
           done

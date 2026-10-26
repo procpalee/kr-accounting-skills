@@ -23,6 +23,12 @@ Claude Code 에 맡길 때 쓰는 스킬을 모았습니다. 더존 원장, 한�
 | [ledger-merge](ledger-merge/) | 더존에서 내려받은 계정별원장(계정마다 시트 하나)을 시트 하나로 합치고, 계정별 차변 · 대변 합이 원장 [누계]와 맞는지 확인 시트에 적는다 | [zip](https://github.com/procpalee/kr-accounting-skills/releases/latest/download/ledger-merge.zip) |
 | [excel-sync](excel-sync/) | 엑셀에서 사람이 직접 고친 내용을 기준본과 비교해(값 · 수식 · 서식 · 행열 삽입 · 병합 · 유효성 …) 코드에 반영하고, 다시 만든 파일과 차이 0 을 확인한다 | [zip](https://github.com/procpalee/kr-accounting-skills/releases/latest/download/excel-sync.zip) |
 
+### 공시 · 감사
+
+| 스킬 | 하는 일 | 다운로드 |
+|---|---|---|
+| [dsd-interim](dsd-interim/) | 분 · 반기 보고서 DSD(DART 편집기 문서)를 직전 중간보고서 DSD 를 뼈대로 만든다 - 기간 넘기기 → 당기 칸을 조서 · 정산표 엑셀에서 채우기 → DSD ↔ 조서 대사 → 합계 검산을 한 번에 돌리고, 못 채운 칸만 사람이 정리한다 | [zip](https://github.com/procpalee/kr-accounting-skills/releases/latest/download/dsd-interim.zip) |
+
 ### 문서 서식 · 커뮤니케이션
 
 | 스킬 | 하는 일 | 다운로드 |
@@ -32,7 +38,7 @@ Claude Code 에 맡길 때 쓰는 스킬을 모았습니다. 더존 원장, 한�
 | [html-theme](html-theme/) | 정리 · 비교 · 검토 결과를 보고서 문서처럼 보이는 HTML 페이지로 | [zip](https://github.com/procpalee/kr-accounting-skills/releases/latest/download/html-theme.zip) |
 | [email-draft](email-draft/) | 업무 메일 초안(.eml)까지만 만들기 - 발송은 사람이 직접 | [zip](https://github.com/procpalee/kr-accounting-skills/releases/latest/download/email-draft.zip) |
 
-ledger-merge 는 excel-theme 를 함께 설치해야 합니다.
+ledger-merge 는 excel-theme 를 함께 설치해야 합니다. dsd-interim 은 [dsdxlsx](https://github.com/procpalee/dsdxlsx)(`uv tool install git+https://github.com/procpalee/dsdxlsx`)가 필요합니다.
 
 ## 설치
 

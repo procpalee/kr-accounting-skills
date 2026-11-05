@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>메일 자동 분류 사용법</title>
+<style>
+:root{--bg:#F0F1F3;--paper:#FFFFFF;--ink:#333333;--text:#222222;--sub:#6E7378;--rule:#595959;--line:#DDDDDD;--hdr:#ECECEC;}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#101215;--paper:#191C20;--ink:#E9EAEC;--text:#D2D5D9;--sub:#93989E;--rule:#8D9298;--line:#333740;--hdr:#242931;}}
+:root[data-theme="dark"]{--bg:#101215;--paper:#191C20;--ink:#E9EAEC;--text:#D2D5D9;--sub:#93989E;--rule:#8D9298;--line:#333740;--hdr:#242931;}
+body{background:var(--bg);color:var(--text);margin:0;padding:32px 16px;font-family:"Pretendard Variable",Pretendard,"Malgun Gothic","맑은 고딕",sans-serif;font-size:15px;line-height:1.75;}
+.doc{max-width:860px;margin:0 auto;background:var(--paper);border:1px solid var(--line);padding:44px 48px 52px;}
+h1{font-size:1.5rem;color:var(--ink);margin:0 0 4px;}
+.sub{color:var(--sub);font-size:.86rem;border-bottom:3px solid var(--rule);padding-bottom:10px;margin-bottom:24px;}
+h2{font-size:1.05rem;color:var(--ink);margin:32px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line);}
+p{margin:0 0 10px;word-break:keep-all;}
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin:6px 0 14px;border-top:2px solid var(--rule);border-bottom:2px solid var(--rule);}
+th,td{border-bottom:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top;word-break:keep-all;}
+th{background:var(--hdr);color:var(--ink);}
+code{font-family:Consolas,monospace;font-size:.88em;background:var(--hdr);padding:1px 4px;}
+@media (max-width:600px){.doc{padding:28px 18px;}table{font-size:.84rem;}}
+</style>
+</head>
+<body>
+<div class="doc">
+<h1>메일 자동 분류 사용법</h1>
+<div class="sub">클래식 Outlook ClientSort, 거래처 루트 <code>{{ROOT}}</code>, Outlook 폴더 <code>{{OUTLOOK_ROOT}}</code></div>
+
+<p>클래식 Outlook이 켜져 있으면 업무 메일은 알아서 거래처별 Outlook 폴더로 들어가고, 그 폴더에 들어간 메일은 원본과 첨부가 거래처 폴더에 바로 저장됩니다. 자동으로 못 정한 메일만 직접 끌어다 넣거나 [거래처로 분류]를 누르면 됩니다.</p>
+
+<h2>1. 메일 한 통이 처리되는 흐름</h2>
+<table>
+<tr><th>단계</th><th>하는 일</th></tr>
+<tr><td>분류</td><td>받은 편지함, 보낸 편지함, 감시 폴더에 메일이 들어오면 아래 규칙으로 거래처를 정해 그 Outlook 폴더로 넣습니다. 받은 메일은 옮기고, 보낸 메일은 사본을 넣습니다(원본은 보낸 편지함에 남음).</td></tr>
+<tr><td>저장</td><td>거래처 Outlook 폴더에 메일이 들어오는 순간(자동이든 끌어다 넣었든) 원본 .msg는 거래처 폴더 <code>메일\</code>, 받은 메일 첨부는 <code>첨부\</code>에 저장됩니다.</td></tr>
+<tr><td>정리</td><td>Claude에게 "OO 메일 정리해줘"라고 하면 새 메일로 <code>메일 히스토리.md</code>(사람과 역할, 타임라인, 챙길 것)를 고칩니다.</td></tr>
+</table>
+
+<h2>2. 자동 분류 규칙</h2>
+<p>위에서부터 차례로 보고 처음 맞는 것으로 정합니다. 확실하지 않으면 옮기지 않습니다.</p>
+<table>
+<tr><th>순서</th><th>보는 것</th><th>예</th></tr>
+<tr><td>0</td><td>제외 제목이면 분류 안 함</td><td>그룹 가입, 작업 할당, 폴더 공유 알림</td></tr>
+<tr><td>1</td><td>제목에 거래처명이나 키워드</td><td>"[가나상사] 견적 송부" → 가나상사. 긴 이름이 먼저('가나상사홀딩스'와 '가나상사'가 같이 걸리면 긴 쪽). 두 글자 이름은 다른 단어 속(앞 글자가 한글)이면 무시</td></tr>
+<tr><td>2</td><td>보낸 사람, 받는 사람, 참조 주소</td><td>거래처 도메인(@ganasangsa.co.kr)이나 등록된 담당자 개인 메일</td></tr>
+<tr><td>3</td><td>같은 대화</td><td>답장, 전달 메일인데 원래 대화가 이미 한 거래처 폴더에 있으면 그 폴더</td></tr>
+<tr><td>-</td><td>분류 안 함</td><td>두 거래처가 같이 걸림, 받는 사람이 많은 단체 메일, 단서 없음 → 직접 분류</td></tr>
+</table>
+
+<h2>3. 버튼</h2>
+<table>
+<tr><th>버튼</th><th>언제</th><th>하는 일</th></tr>
+<tr><td>거래처로 분류</td><td>자동으로 안 들어간 메일, 엉뚱한 폴더에 들어간 메일</td><td>선택한 메일(여러 통 가능)을 거래처 폴더로. 규칙이 정한 거래처를 기본값으로 보여 주니 맞으면 확인, 아니면 번호만 바꿉니다. 규칙이 못 맞혔으면 상대 주소를 기억해 다음부터 자동으로 분류합니다.</td></tr>
+<tr><td>폴더 연결 맞추기</td><td>거래처 폴더를 새로 만든 뒤, 연결이 이상할 때</td><td>새 거래처의 Outlook 폴더를 만들어 연결하고 거래처 목록을 다시 읽은 뒤 결과를 보여 줍니다. Outlook을 켤 때도 한 번 돕니다.</td></tr>
+<tr><td>사용법</td><td>기억이 안 날 때</td><td>이 페이지</td></tr>
+</table>
+
+<h2>4. 자주 하는 일</h2>
+<table>
+<tr><th>하고 싶은 것</th><th>방법</th></tr>
+<tr><td>새 거래처 추가</td><td>거래처 루트에 폴더를 만들고 [폴더 연결 맞추기]. 생긴 <code>_mail\mail.json</code>에 담당자 주소와 도메인을 넣습니다.</td></tr>
+<tr><td>거래처 정리(보관)</td><td>Outlook에서 그 거래처 폴더를 <code>{{OUTLOOK_ROOT}}</code> 밖으로 옮깁니다. 자동 분류와 저장에서 빠집니다.</td></tr>
+<tr><td>폴더 이름 바꾸기</td><td><code>{{OUTLOOK_ROOT}}</code> 안에서는 마음대로 바꿔도 됩니다(폴더 고유 ID로 연결). 지우거나 다른 사서함, PST로 옮기면 연결이 끊깁니다.</td></tr>
+<tr><td>감시 폴더 바꾸기</td><td><code>_메일분류\mail_sort.json</code>의 <code>watch</code>를 고칩니다(사서함 최상위 기준 경로).</td></tr>
+</table>
+
+<h2>5. 안 될 때</h2>
+<table>
+<tr><th>증상</th><th>확인</th></tr>
+<tr><td>아무것도 분류 안 됨</td><td>클래식 Outlook이 켜져 있는지, 매크로가 막혔는지(서명, 보안 설정). <code>_메일분류\last_run.txt</code> 시각이 마지막으로 켠 시각인지.</td></tr>
+<tr><td>특정 메일만 안 됨</td><td><code>_메일분류\Client_Sort_log.tsv</code>에서 그 제목을 찾습니다. 여러 거래처, 단체 메일, 제외 제목이면 일부러 안 한 것입니다.</td></tr>
+<tr><td>폴더에 넣었는데 저장이 없음</td><td>그 거래처가 보관 상태인지, [폴더 연결 맞추기] 결과에 '확인 필요'가 있는지. <code>_메일분류\last_sync.txt</code>.</td></tr>
+<tr><td>Outlook을 꺼 둔 동안의 메일</td><td>켤 때 마지막 종료 이후 메일을 모두 분류하고 거래처 폴더도 다시 훑어 저장합니다.</td></tr>
+</table>
+<p style="color:var(--sub);font-size:.84rem">예시의 거래처명과 도메인은 가상입니다.</p>
+</div>
+</body>
+</html>

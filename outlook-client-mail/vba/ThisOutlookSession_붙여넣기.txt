@@ -1,0 +1,17 @@
+' ThisOutlookSession 에 붙여 넣을 코드(ClientSort) - 이미 있는 같은 이름 Sub 이 있으면 그 안에 ClientSort.Start "…" 한 줄만 넣는다
+' 시작 이벤트가 빠지는 경우가 있어 세 곳에서 부른다(이미 시작했으면 Start 가 아무것도 안 함)
+Private Sub Application_Startup()
+    ClientSort.Start "Startup"
+End Sub
+
+Private Sub Application_MAPILogonComplete()
+    ClientSort.Start "로그인 완료"
+End Sub
+
+Private Sub Application_NewMailEx(ByVal EntryIDCollection As String)
+    ClientSort.Start "새 메일"
+End Sub
+
+Private Sub Application_Quit()
+    ClientSort.SaveLastRun
+End Sub

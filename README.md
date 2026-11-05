@@ -28,9 +28,6 @@ Claude Code 에 맡길 때 쓰는 스킬을 모았습니다. 더존 원장, 한�
 | 스킬 | 하는 일 | 다운로드 |
 |---|---|---|
 | [dsd-interim](dsd-interim/) | 분 · 반기 보고서 DSD(DART 편집기 문서)를 직전 중간보고서 DSD 를 뼈대로 만든다 - 기간 넘기기 → 당기 칸을 조서 · 정산표 엑셀에서 채우기 → DSD ↔ 조서 대사 → 합계 검산을 한 번에 돌리고, 못 채운 칸만 사람이 정리한다 | [zip](https://github.com/procpalee/kr-accounting-skills/releases/latest/download/dsd-interim.zip) |
-| [kicpa-jet](kicpa-jet/) | 한공회 2026 표준조서 기준 분개테스트 조서(3600 부정의 검토 18(1), 3600D)를 분개장과 TB로 만든다. 모집단 완전성(기초 TB + 분개 = 기말 TB)과 시나리오 11종(주말·공휴일, 보고기간말 고액, 끝자리 0, 비정상 상대계정 등)이 모두 엑셀 수식이다. K-IFRS·일반기업회계기준 두 판 | [zip](https://github.com/procpalee/kr-accounting-skills/releases/latest/download/kicpa-jet.zip) |
-| [kicpa-analytical](kicpa-analytical/) | 한공회 표준조서 2120A(위험평가 분석적절차)·8110A(전반적인 결론을 위한 분석적절차)를 TB로 만든다. 과목 증감, 유의적 차이 잠정 판정, 재무비율 19개, 월별 매출 추세가 수식이고, 분개장을 주면 차이 과목마다 상대계정·거래처·큰 전표를 뽑아 설명 초안 근거로 쓴다 | [zip](https://github.com/procpalee/kr-accounting-skills/releases/latest/download/kicpa-analytical.zip) |
-| [kicpa-sap](kicpa-sap/) | 한공회 표준조서 3300A 실증적 분석절차(기준서 520)를 입력 JSON으로 만든다. 기대치 = 드라이버(수량·면적·평균잔액) × 외부 파라미터(시장가격·계약 단가·금리)를 기간·항목별 수식으로 두고, 대상마다 9단계 상세 시트를 만든다 | [zip](https://github.com/procpalee/kr-accounting-skills/releases/latest/download/kicpa-sap.zip) |
 
 ### 문서 서식 · 커뮤니케이션
 
@@ -41,9 +38,7 @@ Claude Code 에 맡길 때 쓰는 스킬을 모았습니다. 더존 원장, 한�
 | [html-theme](html-theme/) | 정리 · 비교 · 검토 결과를 보고서 문서처럼 보이는 HTML 페이지로 | [zip](https://github.com/procpalee/kr-accounting-skills/releases/latest/download/html-theme.zip) |
 | [email-draft](email-draft/) | 업무 메일 초안(.eml)까지만 만들기 - 발송은 사람이 직접 | [zip](https://github.com/procpalee/kr-accounting-skills/releases/latest/download/email-draft.zip) |
 
-ledger-merge 는 excel-theme 를 함께 설치해야 합니다.
-한공회 조서 3종(kicpa-jet·kicpa-analytical·kicpa-sap)은 한 팩입니다. 공통 코드가 kicpa-jet 폴더에 있으므로 셋을 같은 스킬 폴더에 나란히 두고 excel-theme 도 함께 설치하세요. 조서 검증(엑셀 수식 재계산 대조)에는 LibreOffice, 행높이 자동 맞춤에는 윈도우 데스크톱 엑셀이 필요합니다(없으면 건너뜁니다).
-dsd-interim은 [dsdxlsx](https://github.com/procpalee/dsdxlsx)(`uv tool install git+https://github.com/procpalee/dsdxlsx`)가 필요합니다.
+ledger-merge 는 excel-theme 를 함께 설치해야 합니다. dsd-interim 은 [dsdxlsx](https://github.com/procpalee/dsdxlsx)(`uv tool install git+https://github.com/procpalee/dsdxlsx`)가 필요합니다.
 
 ## 설치
 

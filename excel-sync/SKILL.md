@@ -29,9 +29,10 @@ snap 은 새 기준본을 임시 파일로 다 만든 뒤에만 옛 것을 histo
 2. `xlsync.py diff <엑셀> --code <코드 폴더>` → 표를 읽는다(문구 검색은 코드·설정 파일만 - .md·.txt·.csv·한 줄짜리 덤프 제외, 생성 기록이 있으면 --code 생략 시 그 스크립트 폴더). 열마다: 종류 · 위치(현재 주소) · 기준 위치 · 전→후 · 코드(쓴 곳 = 생성 기록의 파일:줄, 문구 = 코드에 같은 문자열이 적힌 줄).
 3. 변경마다 반영 방법을 정한다.
    - **코드 수정**: 쓴 곳/문구 위치가 상수·문구 표·서식 헬퍼·열너비 설정이면 그 줄을 고친다(같은 패턴이 여러 칸에 쓰이는지 확인 - 한 칸만 바꾼 경우는 아래 목록으로).
-   - **덮어쓰기 목록**: 한두 칸만 다른 값·서식·열너비·병합은 `xlsync.py overrides <diff_...json> --out <코드폴더>/overrides.json`
+   - **덮어쓰기 목록**: 한두 칸만 다른 값·서식·열너비·병합은 `xlsync.py overrides <diff_...json> --out <코드폴더>/overrides.json --period <기간, 예 2026-3Q>`
      → 생성 코드 저장 직전에 한 번만 추가:
-     `sys.path.insert(0, os.path.expanduser("~/.claude/skills/excel-sync")); from xlsync_overrides import apply_overrides; apply_overrides(wb, "<코드폴더>/overrides.json")`
+     `sys.path.insert(0, os.path.expanduser("~/.claude/skills/excel-sync")); from xlsync_overrides import apply_overrides; apply_overrides(wb, "<코드폴더>/overrides.json", period="<이번 기간>")`
+     항목마다 적용 기간과 바뀌기 전 값이 들어간다. 코드가 만든 값이 그때와 다르거나 기간이 다르면 지난 값을 넣지 않고 건너뛰며 경고한다(`on_mismatch="warn"` 은 경고 후 적용, `"error"` 는 멈춤). 건너뛴 칸은 이번 기간에 사람이 다시 볼 곳이므로 보고에 그대로 적는다. 기간·전값이 없는 옛 목록도 읽는다.
    - **직접 반영**: 행·열 삽입/삭제, 시트 추가·이름 변경, 체크박스·VBA·그림·조건부 서식은 생성 코드 구조를 고친다(diff 의 행 이동표 `maps` 참고).
      같은 시트에 행·열 구조 변경이 있으면 그 시트의 덮어쓰기 목록은 만들지 않는다 - 구조를 먼저 코드에 반영하고 다시 diff.
 4. 다시 만들기: 생성 스크립트를 **임시 출력 경로**로 실행(가능하면 `record` 로 기록도 갱신) + 원래 후처리.
@@ -51,3 +52,4 @@ diff 로 바뀐 점과 행·열 이동표를 보여 주고, 그 파일을 읽거
   옛 기준본(2026-09-30 이전 snap)과는 이 항목을 건너뛰고 '참고' 줄로 알린다 - 다시 snap 하면 비교.
 - 엑셀 재저장(정규화)은 pywin32 와 엑셀이 있어야 한다. 없으면 openpyxl 산출물과 엑셀 저장본 사이에 기본 글꼴·열너비 흔적이 차이로 나올 수 있다.
 - 계산 결과 값(캐시)·선택 칸·확대율은 비교하지 않는다.
+- 글자색과 테두리의 같은 검정(자동·테마1·000000)은 같은 색으로 본다.

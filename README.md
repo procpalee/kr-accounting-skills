@@ -23,6 +23,13 @@ Claude Code 에 맡길 때 쓰는 스킬을 모았습니다. 더존 원장, 한�
 | [ledger-merge](ledger-merge/) | 더존에서 내려받은 계정별원장(계정마다 시트 하나)을 시트 하나로 합치고, 계정별 차변 · 대변 합이 원장 [누계]와 맞는지 확인 시트에 적는다 | [zip](https://github.com/procpalee/kr-accounting-skills/releases/latest/download/ledger-merge.zip) |
 | [excel-sync](excel-sync/) | 엑셀에서 사람이 직접 고친 내용을 기준본과 비교해(값 · 수식 · 서식 · 행열 삽입 · 병합 · 유효성 …) 코드에 반영하고, 다시 만든 파일과 차이 0 을 확인한다 | [zip](https://github.com/procpalee/kr-accounting-skills/releases/latest/download/excel-sync.zip) |
 
+### 사람이 고친 문서 지키기
+
+| 스킬 | 하는 일 | 다운로드 |
+|---|---|---|
+| [office-guard](office-guard/) | 코드가 사람이 고친 엑셀, Word, PPT, DSD를 덮어쓰려 하면 파일을 건드리지 않고 `[저장 거부]`로 멈춘다. 파이썬 저장과 복사, 이동, 엑셀 COM 저장을 쓰기 전에 판단하고, 마감한 문서는 정본으로 기록해 빌더가 다시 만들지 못하게 한다. 문서를 저장한 빌더 코드의 판은 자동으로 남는다 | [zip](https://github.com/procpalee/kr-accounting-skills/releases/latest/download/office-guard.zip) |
+| [doc-sync](doc-sync/) | Word와 PPT에서 사람이 직접 고친 내용을 기준본과 비교해(문단, 표 칸, 서식, 슬라이드, 도형 위치, 그림, 차트, 발표 메모) 바뀐 곳과 그 글을 쓴 코드 줄을 찾고, 다시 만든 문서와 차이 0을 확인한다 | [zip](https://github.com/procpalee/kr-accounting-skills/releases/latest/download/doc-sync.zip) |
+
 ### 공시 · 감사
 
 | 스킬 | 하는 일 | 다운로드 |
@@ -40,6 +47,8 @@ Claude Code 에 맡길 때 쓰는 스킬을 모았습니다. 더존 원장, 한�
 | [outlook-client-mail](outlook-client-mail/) | 클래식 Outlook 메일을 거래처별 폴더로 자동 분류하고(Outlook VBA, 제목의 거래처명→주소→같은 대화 순서의 정해진 규칙), 원본(.msg)과 받은 첨부를 거래처 폴더에 저장한다. Claude가 거래처마다 사람과 역할, 타임라인, 챙길 것을 원본 링크와 함께 '메일 히스토리'로 정리한다 | [zip](https://github.com/procpalee/kr-accounting-skills/releases/latest/download/outlook-client-mail.zip) |
 
 ledger-merge는 excel-theme를 함께 설치해야 합니다.
+office-guard는 폴더를 넣은 뒤 `settings.json`에 `PYTHONPATH`와 훅을 넣어야 작동합니다. 순서는 [references/install.md](office-guard/references/install.md)에 있습니다.
+doc-sync에서 바뀐 글을 쓴 코드 줄까지 찾으려면(`--code`) excel-sync를 함께 설치해야 합니다.
 outlook-client-mail은 윈도우, 클래식 Outlook(new Outlook에는 VBA가 없음), `pywin32`가 필요합니다. 설치 순서는 [references/install.md](outlook-client-mail/references/install.md)에 있습니다.
 dsd-interim은 [dsdxlsx](https://github.com/procpalee/dsdxlsx)(`uv tool install git+https://github.com/procpalee/dsdxlsx`)가 필요합니다.
 

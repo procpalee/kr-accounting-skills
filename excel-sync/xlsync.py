@@ -12,8 +12,9 @@
         차이 0 이면 종료코드 0, 남은 차이가 있으면 표를 출력하고 1.
   python -X utf8 xlsync.py record --prov 기록.json -- <생성 스크립트.py> [인자 ...]
         스크립트를 실행하며 openpyxl 이 칸·열·병합·유효성·이름을 쓴 코드 줄을 기록.
-  python -X utf8 xlsync.py overrides <diff_...json> --out overrides.json [--kinds value,style,width,height,merge]
+  python -X utf8 xlsync.py overrides <diff_...json> --out overrides.json [--period 2026-3Q] [--kinds value,style,width,height,merge]
         칸 단위 수정을 덮어쓰기 목록으로 저장(생성 코드가 저장 직전에 xlsync_overrides.apply_overrides 로 적용).
+        항목마다 바뀌기 전 값을 넣고, --period 를 주면 적용 기간도 넣는다.
 
 엑셀이 저장하지 않은 파일(openpyxl 산출물)은 비교 전에 엑셀로 한 번 저장한 사본으로 읽는다(원본은 그대로). --no-normalize 로 끔.
 """
@@ -146,7 +147,7 @@ def cmd_diff(a):
     with open(cur, "w", encoding="utf-8") as f:
         json.dump(B, f, ensure_ascii=False)
     with open(os.path.join(d, "diff_%s.json" % t), "w", encoding="utf-8") as f:
-        json.dump({"result": res, "cur_snapshot": cur, "prov": bool(prov), "code_roots": roots}, f, ensure_ascii=False, indent=1)
+        json.dump({"result": res, "cur_snapshot": cur, "base_file": base, "prov": bool(prov), "code_roots": roots}, f, ensure_ascii=False, indent=1)
     with open(os.path.join(d, "diff_%s.md" % t), "w", encoding="utf-8") as f:
         f.write(md)
     print(md)
@@ -171,7 +172,14 @@ def cmd_overrides(a):
     d = json.load(open(a.diff, encoding="utf-8"))
     cur = json.load(open(d["cur_snapshot"], encoding="utf-8"))
     kinds = tuple(x.strip() for x in a.kinds.split(",") if x.strip())
-    entries, skipped = ov.make(d["result"], cur, kinds)
+    base_file = d.get("base_file") or os.path.join(os.path.dirname(d["cur_snapshot"]), "base.json")
+    base = None
+    if base_file.lower().endswith(".json") and os.path.exists(base_file):
+        with open(base_file, encoding="utf-8") as f:
+            base = json.load(f)
+    else:
+        print("[경고] 기준 스냅샷이 없어 바뀌기 전 값을 넣지 못했습니다: " + base_file)
+    entries, skipped = ov.make(d["result"], cur, kinds, base=base, period=a.period)
     n = ov.save(entries, a.out, note="xlsync overrides - %s" % os.path.basename(a.diff))
     print("덮어쓰기 목록: %s · 이번 항목 %d · 전체 %d" % (a.out, len(entries), n))
     for s in skipped:
@@ -211,6 +219,7 @@ def main():
     p = sub.add_parser("overrides")
     p.add_argument("diff")
     p.add_argument("--out", required=True)
+    p.add_argument("--period", help="적용 기간(예 2026-3Q). 생성 코드의 apply_overrides(period=) 와 맞아야 적용된다")
     p.add_argument("--kinds", default=",".join(ov.SUPPORTED))
     a = ap.parse_args(argv)
     if a.cmd == "record":

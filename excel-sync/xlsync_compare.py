@@ -151,6 +151,12 @@ def flat(style):
                 out["%s.%s" % (g, k)] = v
         else:
             out[g] = d
+    # 같은 검정의 다른 표기(자동·테마1·000000)는 차이로 보지 않는다 - 엑셀이 저장하며 바꾸는 표기라 사람이 고친 것이 아니다
+    if out.get("font.color") in (None, "auto", "theme1"):
+        out["font.color"] = "000000"
+    for k, v in list(out.items()):
+        if k.startswith("border.") and isinstance(v, str) and v.endswith((" auto", " theme1")):
+            out[k] = v.rsplit(" ", 1)[0] + " 000000"
     return out
 
 

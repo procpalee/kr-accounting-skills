@@ -10,7 +10,8 @@
   <이름>_채움_채움결과.xlsx     못 채운 칸 목록(조서에 없는 값 · 후보 여럿 · 전기 값 다름)
   <이름>_채움_조서대사.xlsx     recon 결과(확인 필요 시트)
   <이름>_채움_검증.xlsx         check 결과(합계 · 대사 · 표기)
-dsdxlsx 는 PATH 의 `dsdxlsx` 명령(uv tool install) 또는 환경변수 DSDXLSX_HOME(저장소 폴더 - uv run)으로 찾는다.
+DSD 엔진(dsdxlsx)은 xlwork 설치본(%LOCALAPPDATA%\\xlwork\\app\\xlwork-server.exe)에서 찾는다.
+PATH 에 `dsdxlsx` 명령이 있거나 환경변수 DSDXLSX_HOME(소스 폴더 - uv run)이 있으면 그것을 먼저 쓴다.
 """
 import argparse
 import os
@@ -26,8 +27,10 @@ def dsdxlsx_cmd():
     exe = shutil.which("dsdxlsx")
     if exe:
         return [exe], None
-    sys.exit("dsdxlsx 를 찾을 수 없습니다 - `uv tool install git+https://github.com/procpalee/dsdxlsx` "
-             "또는 환경변수 DSDXLSX_HOME 에 저장소 폴더를 지정하세요")
+    xlwork = os.path.join(os.environ.get("LOCALAPPDATA", ""), "xlwork", "app", "xlwork-server.exe")
+    if os.path.isfile(xlwork):                    # xlwork 설치본에 든 엔진
+        return [xlwork, "dsdxlsx"], None
+    sys.exit("DSD 엔진을 찾을 수 없습니다 - xlwork를 설치하세요(%s). 설치본 안에 엔진이 들어 있습니다" % "https://xlwork.procpa.co.kr")
 
 
 def run(cmd, cwd, label, ok=(0,)):

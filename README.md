@@ -51,7 +51,7 @@ ledger-merge는 excel-theme를 함께 설치해야 합니다.
 office-guard는 폴더를 넣은 뒤 `settings.json`에 `PYTHONPATH`와 훅을 넣어야 작동합니다. 순서는 [references/install.md](office-guard/references/install.md)에 있습니다.
 doc-sync에서 바뀐 글을 쓴 코드 줄까지 찾으려면(`--code`) excel-sync를 함께 설치해야 합니다.
 outlook-client-mail은 윈도우, 클래식 Outlook(new Outlook에는 VBA가 없음), `pywin32`가 필요합니다. 설치 순서는 [references/install.md](outlook-client-mail/references/install.md)에 있습니다.
-dsd-interim은 [dsdxlsx](https://github.com/procpalee/dsdxlsx)(`uv tool install git+https://github.com/procpalee/dsdxlsx`)가 필요합니다.
+dsd-interim은 [xlwork](https://xlwork.procpa.co.kr) 설치가 필요합니다. DSD 엔진이 xlwork 설치본에 들어 있습니다.
 
 ## 설치
 

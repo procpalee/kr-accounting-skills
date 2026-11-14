@@ -6,13 +6,13 @@ description: 분 · 반기 보고서 DSD(DART 전자공시 편집기 문서)를 
 # dsd-interim - 분 · 반기 DSD 작성
 
 **반복은 코드, 해석은 Claude, 결정은 사람.** 기간 넘기기 · 숫자 채우기 · 대사 · 검산은
-[dsdxlsx](https://github.com/procpalee/dsdxlsx) 가 매번 같게 하고, Claude 는 바뀌는 문단 초안과
+DSD 엔진(dsdxlsx - [xlwork](https://xlwork.procpa.co.kr) 설치본에 들어 있다)이 매번 같게 하고, Claude 는 바뀌는 문단 초안과
 '못 채움' · '확인 필요' 정리를 돕고, 머리글 · 표시 기준(행 추가 · 삭제 · 라벨) · 최종 숫자는 사람이 정한다.
 
 ## 준비
-- 파이썬 3.11+, [uv](https://docs.astral.sh/uv/)
-- dsdxlsx 설치: `uv tool install git+https://github.com/procpalee/dsdxlsx` (명령 `dsdxlsx` 가 PATH 에 생김).
-  저장소를 clone 해서 쓰면 환경변수 `DSDXLSX_HOME` 에 그 폴더를 넣는다.
+- 파이썬 3.11+ (스크립트를 돌릴 때)
+- DSD 엔진: [xlwork](https://xlwork.procpa.co.kr) 를 설치한다(무료, Windows). 설치본 안에 엔진이 들어 있고 스크립트가 알아서 찾는다.
+  명령을 직접 칠 때는 `& "$env:LOCALAPPDATA\xlwork\app\xlwork-server.exe" dsdxlsx <명령>` - 아래 `dsdxlsx …` 는 모두 이렇게 부른다.
 - 한 번에 돌리는 스크립트: 이 스킬의 `scripts/interim.py`.
 
 ## 갈래
@@ -26,7 +26,7 @@ description: 분 · 반기 보고서 DSD(DART 전자공시 편집기 문서)를 
 - **전년 동기** = 작년 같은 분기 DSD - 손익 · 현금흐름 · 흐름형 주석의 전기 값.
 - **전기 감사보고서 DSD** = 3분기 → 다음 해 1분기처럼 해가 바뀔 때만 - 전기말 값.
 - **조서** = 당기 값이 있는 엑셀(분석적검토 조서 · 정산표 · 연결정산표). 엑셀에서 열어 저장한 파일이어야 수식 결과가 들어 있다.
-- **건별 설정(선택)** = JSON 하나(대사 · 채우기 공용). 조서 시트 지정, 일부러 빼는 칸, DSD 와 이름이 다른 조서 행을 적는다 - 형식은 dsdxlsx README 1-1c(DSD ↔ 조서 대사).
+- **건별 설정(선택)** = JSON 하나(대사 · 채우기 공용). 조서 시트 지정, 일부러 빼는 칸, DSD 와 이름이 다른 조서 행을 적는다. 형식: `{"별도": {…}, "연결": {…}}`, 안에 `재무제표`(`{"BS": [시트], …}`), `주석`(`[시트]`), `빼는 시트`, `빼는 칸`(`[{"구획", "행", "열", "기간"}]`), `이름 다른 행`(`{DSD 행: 조서 행}`). 없으면 `dsdxlsx recon … --config <새 파일>` 이 자동 판정 결과를 써 준다.
 
 ## 2. 한 번에 돌리기
 ```bash
@@ -51,7 +51,7 @@ python ~/.claude/skills/dsd-interim/scripts/interim.py --base "<직전 최종.ds
 
 ## 4. 마무리
 - DART 편집기에서 `_채움.dsd` 를 열어 표 모양 · 쪽 나눔을 보고 저장 → 다시 `dsdxlsx check`.
-- 오타 · 띄어쓰기 · 주석 번호 검토는 dsdxlsx 저장소의 `skills/dsd-review` 스킬.
+- 합계·대사와 오탈자 검토는 xlwork 리본의 [DSD 변환+검증+AI 검토].
 - 결과 송부 메일이 필요하면 초안까지만(발송은 사람).
 
 ## 주의

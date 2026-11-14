@@ -43,6 +43,7 @@ Claude Code 에 맡길 때 쓰는 스킬을 모았습니다. 더존 원장, 한�
 | [excel-theme](excel-theme/) | 엑셀(.xlsx) 생성 · 편집 시 일관된 색 · 폰트 · 표 서식 테마(default · procpa · dcf-valuation) | [zip](https://github.com/procpalee/kr-accounting-skills/releases/latest/download/excel-theme.zip) |
 | [word-theme](word-theme/) | 워드(.docx) 서식 테마(default · procpa) + 문서 유형별 제목부 프리셋(보고서 · 메모 · 제안서 · 의견서 · 조서) | [zip](https://github.com/procpalee/kr-accounting-skills/releases/latest/download/word-theme.zip) |
 | [html-theme](html-theme/) | 정리 · 비교 · 검토 결과를 보고서 문서처럼 보이는 HTML 페이지로 | [zip](https://github.com/procpalee/kr-accounting-skills/releases/latest/download/html-theme.zip) |
+| [ko-writing-check](ko-writing-check/) | 한국어 업무 문서에서 AI가 쓴 티를 점검한다. 줄표, 번역투 같은 겉모양과 "~의 시대", "A에서 B까지" 같은 뜻 없는 구호를 패턴 사전 100개와 스캐너로 잡고, 제목과 첫 단락만 뽑아 "누가 무엇을 하는지 보이는가"를 확인한다. 제안서와 기고문처럼 밖으로 나가는 문서만 독립 검토를 한 번 더 한다 | [zip](https://github.com/procpalee/kr-accounting-skills/releases/latest/download/ko-writing-check.zip) |
 | [email-draft](email-draft/) | 업무 메일 초안(.eml)까지만 만들기 - 발송은 사람이 직접 | [zip](https://github.com/procpalee/kr-accounting-skills/releases/latest/download/email-draft.zip) |
 | [outlook-client-mail](outlook-client-mail/) | 클래식 Outlook 메일을 거래처별 폴더로 자동 분류하고(Outlook VBA, 제목의 거래처명→주소→같은 대화 순서의 정해진 규칙), 원본(.msg)과 받은 첨부를 거래처 폴더에 저장한다. Claude가 거래처마다 사람과 역할, 타임라인, 챙길 것을 원본 링크와 함께 '메일 히스토리'로 정리한다 | [zip](https://github.com/procpalee/kr-accounting-skills/releases/latest/download/outlook-client-mail.zip) |
 

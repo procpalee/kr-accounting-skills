@@ -94,7 +94,7 @@ dsdxlsx link build <정산표> --json
 ### 4. 양쪽 맞추기
 
 - `dsdxlsx status <DSD> --json`: DSD·정산표·뼈대 가운데 무엇이 바뀌었는지와 다음에 돌릴 명령(`next`).
-- `dsdxlsx link back <고친 DSD> <정산표> [--apply] --json`: DSD에서 고친 숫자를 정산표의 어느 칸에 넣을지(`changes`). `--apply` 는 값 칸만 쓴다(쓰기 전 사본을 `_build` 에 둠). 수식 칸은 제안만 한다.
+- `dsdxlsx link back <고친 DSD> <정산표> [--apply] --json`: DSD에서 고친 숫자를 정산표의 어느 칸에 넣을지(`changes`). `--apply` 는 값 칸만 쓴다(쓰기 전 사본을 `_build` 에 둠). 수식 칸은 제안만 한다. 주석 시트에서 직접 넣는 칸(당기·전기 열이 없는 표)도 되돌린다(엔진 0.7.1 이상, xlwork 0.4.1 이상 - 낮으면 `unmapped` 에만 나온다). 항목에 `also` 가 있으면 같은 정산표 칸에서 오는 다른 DSD 칸도 다시 만들 때 같이 바뀐다고 알린다.
 
 ## DSD 하나로 하는 일
 

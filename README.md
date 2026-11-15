@@ -34,6 +34,7 @@ Claude Code 에 맡길 때 쓰는 스킬을 모았습니다. 더존 원장, 한�
 
 | 스킬 | 하는 일 | 다운로드 |
 |---|---|---|
+| [xlwork](xlwork/) | 엑셀 추가기능 [xlwork](https://xlwork.procpa.co.kr)를 설치한 PC에서 그 안의 DSD 엔진을 Claude가 직접 돌린다. 전기 DSD 하나로 당기 정산표를 만들고, 정산표에 숫자를 넣어 저장하면 DSD를 만들고, 합계와 대차를 검산하고(풋팅), 두 DSD를 비교하고, DSD의 숫자를 고친다. 파이썬을 따로 설치하지 않아도 된다 | [zip](https://github.com/procpalee/kr-accounting-skills/releases/latest/download/xlwork.zip) |
 | [dsd-interim](dsd-interim/) | 분 · 반기 보고서 DSD(DART 편집기 문서)를 직전 중간보고서 DSD 를 뼈대로 만든다 - 기간 넘기기 → 당기 칸을 조서 · 정산표 엑셀에서 채우기 → DSD ↔ 조서 대사 → 합계 검산을 한 번에 돌리고, 못 채운 칸만 사람이 정리한다 | [zip](https://github.com/procpalee/kr-accounting-skills/releases/latest/download/dsd-interim.zip) |
 
 ### 문서 서식 · 커뮤니케이션
@@ -51,7 +52,7 @@ ledger-merge는 excel-theme를 함께 설치해야 합니다.
 office-guard는 폴더를 넣은 뒤 `settings.json`에 `PYTHONPATH`와 훅을 넣어야 작동합니다. 순서는 [references/install.md](office-guard/references/install.md)에 있습니다.
 doc-sync에서 바뀐 글을 쓴 코드 줄까지 찾으려면(`--code`) excel-sync를 함께 설치해야 합니다.
 outlook-client-mail은 윈도우, 클래식 Outlook(new Outlook에는 VBA가 없음), `pywin32`가 필요합니다. 설치 순서는 [references/install.md](outlook-client-mail/references/install.md)에 있습니다.
-dsd-interim은 [xlwork](https://xlwork.procpa.co.kr) 설치가 필요합니다. DSD 엔진이 xlwork 설치본에 들어 있습니다.
+xlwork와 dsd-interim은 [xlwork](https://xlwork.procpa.co.kr) 설치가 필요합니다(무료, Windows). DSD 엔진이 xlwork 설치본에 들어 있습니다. xlwork 스킬은 엑셀 리본의 [AI 스킬 설치] 버튼으로도 넣을 수 있습니다.
 
 ## 설치
 
